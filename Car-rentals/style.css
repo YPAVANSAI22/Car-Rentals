@@ -1,0 +1,262 @@
+/* ===============  RESET  =============== */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===============  GLOBALS  =============== */
+:root {
+  --primary: #007bff;
+  --primary-dark: #0056b3;
+  --bg-dark: #222;
+  --text-light: #fff;
+  --accent: #f44336;
+  --radius: 10px;
+  --shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
+  scroll-behavior: smooth;
+}
+
+html,
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #fafafa;
+  color: #333;
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+/* ===============  HEADER / NAV  =============== */
+header {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  box-shadow: var(--shadow);
+}
+
+header h1 {
+  font-size: 26px;
+  letter-spacing: 1px;
+}
+
+.menu-icon {
+  font-size: 30px;
+  cursor: pointer;
+  display: none;
+  
+}
+
+nav {
+  display: flex;
+  gap: 18px;
+}
+
+nav a {
+  color: var(--text-light);
+  text-decoration: none;
+  padding: 8px 14px;
+  border-radius: var(--radius);
+  transition: background 0.3s;
+}
+
+nav a:hover,
+nav a.active {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* ===============  MOBILE NAV  =============== */
+#menu-toggle {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .menu-icon {
+    display: block;
+  }
+  nav {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background: var(--bg-dark);
+    flex-direction: column;
+    width: 220px;
+    max-height: 0;
+    overflow: hidden;
+    border-bottom-left-radius: var(--radius);
+    transition: max-height 0.4s ease;
+  }
+  #menu-toggle:checked ~ nav {
+    max-height: 300px;
+  }
+}
+
+/* ===============  CAR CARDS  =============== */
+.car-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  padding: 40px 20px;
+}
+
+.car,
+.car-details-box {
+  background: #fff;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  text-align: center;
+  padding: 18px;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  perspective: 800px; /* for 3‑D hover */
+}
+
+.car:hover {
+  transform: translateY(-10px);
+}
+
+.car img,
+.car-details-box img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 12px;
+}
+
+.car h3,
+.car-details-box h2 {
+  font-size: 20px;
+  margin-bottom: 6px;
+}
+
+.price-tag {
+  font-weight: bold;
+  margin-bottom: 8px;
+  color: var(--primary-dark);
+}
+
+.btn,
+button {
+  background: var(--primary);
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.btn:hover,
+button:hover {
+  background: var(--primary-dark);
+}
+
+/* 3‑D tilt effect container */
+.tilt {
+  transform-style: preserve-3d;
+}
+
+/* ===============  CART ICON / PANEL  =============== */
+.cart-icon {
+  position: fixed;
+  top: 22px;
+  right: 26px;
+  font-size: 34px;
+  cursor: pointer;
+  color: var(--text-light);
+  z-index: 1000;
+}
+
+.cart-count {
+  background: var(--accent);
+  border-radius: 50%;
+  padding: 3px 8px;
+  font-size: 13px;
+  position: absolute;
+  top: -8px;
+  right: -12px;
+}
+
+.cart-panel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 340px;
+  height: 100%;
+  background: #fff;
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.2);
+  transform: translateX(100%);
+  transition: transform 0.35s ease;
+  z-index: 1500;
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+
+.cart-panel.open {
+  transform: translateX(0);
+}
+
+.cart-item {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
+}
+
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+.cart-remove {
+  background: var(--accent);
+  margin-top: 6px;
+}
+
+#cart-total {
+  font-weight: 600;
+  margin: 15px 0 5px;
+}
+
+.checkout {
+  background: #28a745;
+}
+
+.checkout:hover {
+  background: #1e7e34;
+}
+
+/* ===============  HERO (INDEX)  =============== */
+.hero {
+  background: var(--primary);
+  color: #fff;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 32px;
+  margin-bottom: 18px;
+}
+
+/* Footer */
+footer {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  padding: 20px;
+  text-align: center;
+  margin-top: 60px;
+}
+
+footer nav {
+  justify-content: center;
+  margin-top: 8px;
+}
+nav.footer a {
+  margin: 0 10px;
+}

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car Details</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    header {
+      position: relative;
+      background: #333;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+
+    nav {
+      margin-top: 10px;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .car-details {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      text-align: center;
+    }
+
+    .car-details img {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      border-radius: 10px;
+    }
+
+    .car-details button {
+      margin-top: 10px;
+      background-color: #007bff;
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    .car-details button:hover {
+      background-color: #0056b3;
+    }
+
+    .cart-icon {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      color: white;
+      z-index: 999;
+    }
+
+    .cart-count {
+      background: red;
+      color: white;
+      border-radius: 50%;
+      padding: 2px 8px;
+      font-size: 12px;
+      position: absolute;
+      top: -5px;
+      right: -10px;
+    }
+
+    .cart-panel {
+      position: fixed;
+      right: 0;
+      top: 0;
+      width: 320px;
+      height: 100%;
+      background: white;
+      box-shadow: -2px 0 5px rgba(0, 0, 0, 0.3);
+      padding: 20px;
+      display: none;
+      overflow-y: auto;
+      z-index: 1000;
+    }
+
+    .cart-item {
+      border-bottom: 1px solid #ccc;
+      padding: 10px 0;
+    }
+
+    .cart-item button {
+      background-color: crimson;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+
+    #cart-total {
+      font-weight: bold;
+      margin-top: 15px;
+    }
+
+    #checkout {
+      margin-top: 10px;
+      background: green;
+      color: white;
+      padding: 10px;
+      width: 100%;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    #checkout:hover {
+      background: darkgreen;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Car Details</h1>
+    <input type="checkbox" id="menu-toggle" style="display: none;">
+    <label for="menu-toggle" class="menu-icon">&#9776;</label>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="cars.html">Garage</a>
+    </nav>
+  </header>
+
+  <section class="car-details">
+    <img src="assets/car1.jpg" alt="Car">
+    <h2>Toyota Camry</h2>
+    <p>Price: ₹10000/day</p>
+    <p>Fuel Type: Petrol</p>
+    <p>Seats: 5</p>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </section>
+
+  <section class="car-details">
+    <img src="assets/car2.jpg" alt="Car">
+    <h2>BMW X5</h2>
+    <p>Price: ₹15000/day</p>
+    <p>Fuel Type: Diesel</p>
+    <p>Seats: 7</p>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </section>
+  <section class="car-details">
+    <img src="assets/car3.jpg" alt="Car">
+    <h2>Honda Accord</h2>
+    <p>Price: ₹12000/day</p>
+    <p>Fuel Type: Petrol</p>
+    <p>Seats: 5</p>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </section>
+  <section class="car-details">
+    <img src="assets/car4.jpg" alt="Car">
+    <h2>Ford Mustang</h2>
+    <p>Price: ₹18000/day</p>
+    <p>Fuel Type: Petrol</p>
+    <p>Seats: 4</p>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </section>
+  <section class="car-details">
+    <img src="assets/car5.jpg" alt="Car">
+    <h2>Hyundai Creta</h2>
+    <p>Price: ₹6500/day</p>
+    <p>Fuel Type: Diesel</p>
+    <p>Seats: 5</p>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </section>
+  <section class="car-details">
+    <img src="assets/car6.jpg" alt="Car">
+    <h2>Baleno</h2>
+    <p>Price: ₹5000/day</p>
+    <p>Fuel Type: Petrol</p>
+    <p>Seats: 5</p>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </section>
+  <section class="car-details">
+    <img src="assets/car7.jpg" alt="Car">
+    <h2>Hyundai i20</h2>
+    <p>Price: ₹6000/day</p>
+    <p>Fuel Type: Petrol</p>
+    <p>Seats: 5</p>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </section>
+  <section class="car-details">
+    <img src="assets/car8.jpg" alt="Car">
+    <h2>Maruti Suzuki Swift</h2>
+    <p>Price: ₹4500/day</p>
+    <p>Fuel Type: Petrol</p>
+    <p>Seats: 5</p>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </section>
+  <section class="car-details">
+    <img src="assets/car9.jpg" alt="Car">
+    <h2>Toyota Fortuner</h2>
+    <p>Price: ₹9000/day</p>
+    <p>Fuel Type: Diesel</p>
+    <p>Seats: 7</p>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </section>
+  <section class="car-details">
+    <img src="assets/car10.jpg" alt="Car">
+    <h2>Hyundai Venue</h2>
+    <p>Price: ₹6000/day</p>
+    <p>Fuel Type: Petrol</p>
+    <p>Seats: 5</p>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </section>
+  <section class="car-details">
+    <img src="assets/car11.jpg" alt="Car">
+    <h2>Toyota Innova</h2>
+    <p>Price: ₹8000/day</p>
+    <p>Fuel Type: Diesel</p>
+    <p>Seats: 7</p>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </section>
+  <section class="car-details">
+    <img src="assets/car12.jpg" alt="Car">
+    <h2>Maruti Suzuki Ertiga</h2>
+    <p>Price: ₹7000/day</p>
+    <p>Fuel Type: Petrol</p>
+    <p>Seats: 7</p>
+    <button onclick="addToCart(this)">Add to Cart</button>
+  </section>
+  
+
+  <script>
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    function updateCartDisplay() {
+      const cartItemsContainer = document.getElementById("cart-items");
+      const cartCount = document.getElementById("cart-count");
+      const cartTotal = document.getElementById("cart-total");
+
+      cartItemsContainer.innerHTML = "";
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        total += item.price;
+        cartItemsContainer.innerHTML += `
+          <div class="cart-item">
+            <strong>${item.name}</strong><br>
+            ₹${item.price}/day
+            <button onclick="removeFromCart(${index})">Remove</button>
+          </div>
+        `;
+      });
+
+      cartCount.innerText = cart.length;
+      cartTotal.innerText = "Total: ₹" + total + "/day";
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    function addToCart(button) {
+      const section = button.closest(".car-details");
+      const name = section.querySelector("h2").innerText;
+      const priceText = section.querySelector("p").innerText;
+      const price = parseInt(priceText.replace(/[^\d]/g, ""));
+      cart.push({ name, price });
+      updateCartDisplay();
+      alert(`${name} added to cart!`);
+    }
+
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCartDisplay();
+    }
+
+    function toggleCart() {
+      const panel = document.getElementById("cart-panel");
+      panel.style.display = panel.style.display === "block" ? "none" : "block";
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty.");
+        return;
+      }
+
+      let names = cart.map(item => item.name).join(', ');
+      alert("Thanks for booking: " + names + "\nTotal: ₹" + cart.reduce((sum, item) => sum + item.price, 0));
+      cart = [];
+      updateCartDisplay();
+      toggleCart();
+    }
+
+    updateCartDisplay();
+  </script>
+
+</body>
+</html>
